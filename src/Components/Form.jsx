@@ -1,8 +1,6 @@
-// src/Components/Form.jsx
-import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';  // For generating unique IDs
-// import { AuthContext } from '../context/AuthContext'; // From Developer 3
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 function Form() {
   const [title, setTitle] = useState('');
