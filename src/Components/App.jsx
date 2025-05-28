@@ -26,6 +26,8 @@ function App() {
       <Link to={"./Profile"}>My Profile</Link>
       <Link to={"./RecipeList"}>View Recipes</Link>
       <Link to={"./SignUp"}>Sign Up</Link>
+      <Link to="./add-recipe">Add Recipe</Link>
+      <Link to="./my-recipes">My Recipes</Link>
 
      </nav>
      <main>
@@ -40,6 +42,8 @@ function App() {
         <Route path='./Profile' element={<Profile /> }/>
         <Route path='./RecipeList' element={<RecipeList /> }/>
         <Route path='./SignUp' element={<SignUp /> }/>
+        <Route path='./add-recipe' element={<Form />} />
+        <Route path='./my-recipes' element={<MyRecipes />} />
       </Routes>
       </main>
 
