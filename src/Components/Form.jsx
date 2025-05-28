@@ -1,107 +1,81 @@
 // src/Components/Form.jsx
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';  // For generating unique IDs
 // import { AuthContext } from '../context/AuthContext'; // From Developer 3
 
-function Form({ isEditing = false }) {
-  const { user } = useContext(AuthContext);
-  const { id } = useParams();
+function Form() {
+  const [title, setTitle] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [instructions, setInstructions] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    ingredients: '',
-    instructions: '',
-    category: '',
-    userId: user?.id || 'anonymous',
-  });
-
-  useEffect(() => {
-    if (isEditing && id) {
-      const recipes = JSON.parse(localStorage.getItem('recipes') || '[]');
-      const recipe = recipes.find((r) => r.id === id);
-      if (recipe && recipe.userId === user?.id) {
-        setFormData(recipe);
-      } else {
-        navigate('/my-recipes');
-      }
-    }
-  }, [id, isEditing, navigate, user]);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const recipes = JSON.parse(localStorage.getItem('recipes') || '[]');
-    if (isEditing) {
-      const updatedRecipes = recipes.map((r) =>
-        r.id === id ? { ...formData, id } : r
-      );
-      localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
-    } else {
-      const newRecipe = { ...formData, id: Date.now().toString() };
-      localStorage.setItem('recipes', JSON.stringify([...recipes, newRecipe]));
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      alert('Please log in to create a recipe.');
+      navigate('/login');
+      return;
     }
+
+    const newRecipe = {
+      id: uuidv4(),
+      title,
+      ingredients,
+      instructions,
+      imageUrl,
+      userId,
+      createdAt: new Date().toISOString(),
+    };
+
+    const recipes = JSON.parse(localStorage.getItem('recipes') || '[]');
+    recipes.push(newRecipe);
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+
+    alert('Recipe created successfully!');
     navigate('/my-recipes');
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-orange-600 mb-4">
-        {isEditing ? 'Edit Recipe' : 'Add Recipe'}
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Recipe Name</label>
+    <div className="form-container">
+      <h2>Create New Recipe</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Title:</label>
           <input
             type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Ingredients</label>
+        <div className="form-group">
+          <label>Ingredients (comma-separated):</label>
           <textarea
-            name="ingredients"
-            value={formData.ingredients}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500"
-            rows="4"
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Instructions</label>
+        <div className="form-group">
+          <label>Instructions:</label>
           <textarea
-            name="instructions"
-            value={formData.instructions}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500"
-            rows="4"
+            value={instructions}
+            onChange={(e) => setInstructions(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Category</label>
+        <div className="form-group">
+          <label>Image URL (optional):</label>
           <input
-            type="text"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-orange-500 focus:border-orange-500"
+            type="url"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition"
-        >
-          {isEditing ? 'Update Recipe' : 'Add Recipe'}
-        </button>
+        <button type="submit">Create Recipe</button>
       </form>
     </div>
   );
