@@ -10,6 +10,7 @@ import Search from './Search'
 import Profile from './Profile'
 import RecipeList from './RecipeList'
 import SignUp from './SignUp'
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
 
@@ -30,18 +31,34 @@ function App() {
      </nav>
      <main>
       <Routes>
-        <Route path='./' element={<Home /> }/>
-        <Route path='./Edit Recipe' element={<EditRecipe /> }/>
-        <Route path='./Favorites' element={<Favorites /> }/>
-        <Route path='./Form' element={<Form /> }/>
-        <Route path='./Login' element={<Login /> }/>
-        <Route path='./My Recipes' element={<MyRecipes /> }/>
-        <Route path='./Search' element={<Search /> }/>
-        <Route path='./Profile' element={<Profile /> }/>
-        <Route path='./RecipeList' element={<RecipeList /> }/>
-        <Route path='./SignUp' element={<SignUp /> }/>
+        <Route path='/' element={<Home />} />
+        <Route path='/Edit Recipe' element={<EditRecipe />} />
+        <Route path='/Favorites' element={<Favorites />} />
+        <Route path='/Form' element={<Form />} />
+        <Route path='/Login' element={<Login />} />
+        <Route path='/My Recipes' element={<MyRecipes />} />
+        <Route path='/Search' element={<Search />} />
+        <Route path='/Profile' element={<Profile />} />
+        <Route path='/RecipeList' element={<RecipeList />} />
+        <Route path='/SignUp' element={<SignUp />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-recipes"
+          element={
+            <ProtectedRoute>
+              <MyRecipes />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      </main>
+     </main>
 
     </div>
   )
