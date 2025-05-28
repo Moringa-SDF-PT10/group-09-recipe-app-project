@@ -5,24 +5,48 @@ import { useAuth } from "../context/AuthContext";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { signup } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
     try {
       await signup(email, password);
       navigate("/profile");
     } catch (error) {
-      console.error("Failed to sign up:", error);
+      setError("Failed to sign up.");
     }
-  }
-return (
-    <form onSubmit={handleSignUp}>
+  };
+
+  return (
+    <div>
       <h2>Signup</h2>
-      <input type= "email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-      <button type="submit">Create Account</button>
-    </form>
+      <form onSubmit={handleSignUp}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Create Account</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </div>
   );
 }

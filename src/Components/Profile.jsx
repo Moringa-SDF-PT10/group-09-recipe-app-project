@@ -2,7 +2,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const {currentUser, logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -12,19 +12,21 @@ const Profile = () => {
     } catch (error) {
       console.error("Failed to log out:", error);
     }
-  }
+  };
+
   return (
     <div>
       <h1>Profile Page</h1>
-            {currentUser ? (
+      {currentUser ? (
         <div>
-           <h2>Welcome, {currentUser.email}</h2>
+          <h2>Welcome, {currentUser.email}</h2>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <p>You are not logged in.</p>
       )}
     </div>
-  );};
+  );
+};
 
 export default Profile;

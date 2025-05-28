@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const { login } = useAuth(); 
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -14,13 +14,13 @@ const Login = () => {
     e.preventDefault();
     setError("");
     try {
-      await login(email, password); 
+      await login(email, password);
       navigate("/profile");
     } catch (error) {
       setError("Failed to log in. Please check your credentials.");
     }
-  };  
- 
+  };
+
   return (
     <div>
       <h1>Login Page</h1>
@@ -32,6 +32,7 @@ const Login = () => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -41,6 +42,7 @@ const Login = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Login</button>
@@ -48,6 +50,6 @@ const Login = () => {
       </form>
     </div>
   );
-}
+};
 
 export default Login;
