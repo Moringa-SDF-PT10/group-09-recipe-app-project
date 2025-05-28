@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-// import { data } from "react-router-dom";
 
 const RecipeList = () => {
   const[recipes, setRecipes] = useState([])
@@ -25,12 +24,29 @@ const RecipeList = () => {
             <h3>{recipe.strMeal}</h3>
             <img
               src={recipe.strMealThumb}
+              
           
             />
             <p>Category: {recipe.strCategory}</p>
-            <p>
-              {recipe.strInstructions}
-            </p>
+            
+            
+            <p>Ingredients: </p>
+            <ul>
+              {[...Array(20)].map((item, i) => {
+              const ingredient = recipe[`strIngredient${i + 1}`];
+              const measure = recipe[`strMeasure${i + 1}`];
+              return ingredient ? <li key={i}>{measure} {ingredient}</li> : null;
+              })}
+            </ul>
+
+            
+            <p>Instructions: </p>
+            <ol>
+
+              {recipe.strInstructions
+              .split(".") 
+              .map((step, index) => step.trim() && <li key={index}>{step}.</li>)}
+            </ol>
             {recipe.strYoutube && (
               <p>
                 <a href={recipe.strYoutube} target="_blank" >
