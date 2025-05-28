@@ -30,7 +30,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/edit-recipe" element={<EditRecipe />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={
+              <ProtectedRoute>
+                <Favorites />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/form" element={<Form />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

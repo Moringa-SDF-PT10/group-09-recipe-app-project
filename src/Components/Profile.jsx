@@ -15,18 +15,8 @@ const Profile = () => {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 400,
-        margin: "40px auto",
-        padding: 32,
-        borderRadius: 12,
-        background: "#fff",
-        boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
-        textAlign: "center",
-      }}
-    >
-      <h1 style={{ marginBottom: 24 }}>Profile Page</h1>
+    <div className="auth-container">
+      <h1 className="auth-title">Profile Page</h1>
       {currentUser ? (
         <div>
           <div
@@ -49,21 +39,7 @@ const Profile = () => {
           <p style={{ fontWeight: 500, marginBottom: 24 }}>
             {currentUser.email}
           </p>
-          <button
-            onClick={handleLogout}
-            style={{
-              padding: "10px 0",
-              borderRadius: 6,
-              background: "#646cff",
-              color: "#fff",
-              fontWeight: 600,
-              border: "none",
-              cursor: "pointer",
-              width: "100%",
-            }}
-          >
-            Logout
-          </button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
         <p>You are not logged in.</p>
