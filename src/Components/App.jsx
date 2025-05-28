@@ -17,11 +17,11 @@ function App() {
     <div>
      <nav>
       <Link to={"./"}>Home</Link>
-      <Link to={"./Edit Recipe"}>Edit Recipe</Link>
+      <Link to={"./EditRecipe"}>EditRecipe</Link>
       <Link to={"./Favorites"}>Favorites</Link>
       <Link to={"./Form"}>Create New Recipe</Link>
       <Link to={"./Login"}>Login</Link>
-      <Link to={"./My Recipes"}>My Recipes</Link>
+      <Link to={"./MyRecipes"}>My Recipes</Link>
       <Link to={"./Search"}>Search</Link>
       <Link to={"./Profile"}>My Profile</Link>
       <Link to={"./RecipeList"}>View Recipes</Link>
@@ -31,11 +31,11 @@ function App() {
      <main>
       <Routes>
         <Route path='./' element={<Home /> }/>
-        <Route path='./Edit Recipe' element={<EditRecipe /> }/>
+        <Route path='./EditRecipe' element={<EditRecipe /> }/>
         <Route path='./Favorites' element={<Favorites /> }/>
         <Route path='./Form' element={<Form /> }/>
         <Route path='./Login' element={<Login /> }/>
-        <Route path='./My Recipes' element={<MyRecipes /> }/>
+        <Route path='./MyRecipes' element={<MyRecipes /> }/>
         <Route path='./Search' element={<Search /> }/>
         <Route path='./Profile' element={<Profile /> }/>
         <Route path='./RecipeList' element={<RecipeList /> }/>

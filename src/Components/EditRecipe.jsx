@@ -1,7 +1,8 @@
-import React from "react";
+// src/Components/EditRecipe.jsx
+import Form from './Form';
 
-const EditRecipe = () => {
-  return <h1>Login Page</h1>;
-};
+function EditRecipe() {
+  return <Form isEditing />;
+}
 
 export default EditRecipe;
