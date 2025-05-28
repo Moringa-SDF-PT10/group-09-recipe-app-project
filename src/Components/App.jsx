@@ -27,20 +27,20 @@ function App() {
       <Link to={"./Profile"}>My Profile</Link>
       <Link to={"./RecipeList"}>View Recipes</Link>
       <Link to={"./SignUp"}>Sign Up</Link>
-
      </nav>
      <main>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Edit Recipe' element={<EditRecipe />} />
-        <Route path='/Favorites' element={<Favorites />} />
-        <Route path='/Form' element={<Form />} />
-        <Route path='/Login' element={<Login />} />
-        <Route path='/My Recipes' element={<MyRecipes />} />
-        <Route path='/Search' element={<Search />} />
-        <Route path='/Profile' element={<Profile />} />
-        <Route path='/RecipeList' element={<RecipeList />} />
-        <Route path='/SignUp' element={<SignUp />} />
+        <Route path="/" element={<Home />} />
+             <Route path='./' element={<Home /> }/>
+        <Route path='./Edit Recipe' element={<EditRecipe /> }/>
+        <Route path='./Favorites' element={<Favorites /> }/>
+        <Route path='./Form' element={<Form /> }/>
+        <Route path='./Login' element={<Login /> }/>
+        <Route path='./My Recipes' element={<MyRecipes /> }/>
+        <Route path='./Search' element={<Search /> }/>
+        <Route path='./Profile' element={<Profile /> }/>
+        <Route path='./RecipeList' element={<RecipeList /> }/>
+        <Route path='./SignUp' element={<SignUp /> }/>
         <Route
           path="/profile"
           element={

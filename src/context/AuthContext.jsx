@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import {
     onAuthStateChanged,
     createUserWithEmailAndPassword,
@@ -12,11 +12,13 @@ const AuthContext = createContext();
 
 export function useAuth() {
     return useContext(AuthContext); 
-    }
+}
+
 export function AuthProvider({ children }) {
-    Const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    React.useEffect(() => {
+
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
             setLoading(false);
@@ -24,14 +26,13 @@ export function AuthProvider({ children }) {
         return unsubscribe;
     }, []);
 
-  const signup = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-  const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
-  const logout = () => signOut(auth);
+    const signup = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+    const login = (email, password) => signInWithEmailAndPassword(auth, email, password);
+    const logout = () => signOut(auth);
 
-  return (
-    <AuthContext.Provider value={{ currentUser, signup, login, logout }}>
-        {!loading && children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{ currentUser, signup, login, logout }}>
+            {!loading && children}
+        </AuthContext.Provider>
+    );
 }
-import React, { useContext, useState } from "react";

@@ -16,9 +16,9 @@ const Profile = () => {
   return (
     <div>
       <h1>Profile Page</h1>
-      {currentUser ? (
+            {currentUser ? (
         <div>
-          <p>Email: {currentUser.email}</p>
+           <h2>Welcome, {currentUser.email}</h2>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
