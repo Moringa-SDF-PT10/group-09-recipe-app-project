@@ -15,12 +15,55 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      <h1>Profile Page</h1>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        padding: 32,
+        borderRadius: 12,
+        background: "#fff",
+        boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
+        textAlign: "center",
+      }}
+    >
+      <h1 style={{ marginBottom: 24 }}>Profile Page</h1>
       {currentUser ? (
         <div>
-          <h2>Welcome, {currentUser.email}</h2>
-          <button onClick={handleLogout}>Logout</button>
+          <div
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              background: "#646cff22",
+              margin: "0 auto 16px auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 36,
+              color: "#646cff",
+            }}
+          >
+            {currentUser.email[0].toUpperCase()}
+          </div>
+          <h2 style={{ marginBottom: 8 }}>Welcome,</h2>
+          <p style={{ fontWeight: 500, marginBottom: 24 }}>
+            {currentUser.email}
+          </p>
+          <button
+            onClick={handleLogout}
+            style={{
+              padding: "10px 0",
+              borderRadius: 6,
+              background: "#646cff",
+              color: "#fff",
+              fontWeight: 600,
+              border: "none",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            Logout
+          </button>
         </div>
       ) : (
         <p>You are not logged in.</p>

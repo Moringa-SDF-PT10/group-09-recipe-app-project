@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import "./Auth.css"; 
 
 const Login = () => {
   const { login } = useAuth();
@@ -22,11 +23,11 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
+    <div className="auth-container">
+      <h1 className="auth-title">Login</h1>
+      <form className="auth-form" onSubmit={handleLogin}>
+        <label>
+          Email:
           <input
             type="email"
             placeholder="Enter your email"
@@ -34,9 +35,9 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </div>
-        <div>
-          <label>Password:</label>
+        </label>
+        <label>
+          Password:
           <input
             type="password"
             placeholder="Enter your password"
@@ -44,10 +45,13 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
+        </label>
         <button type="submit">Login</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="auth-error">{error}</p>}
       </form>
+      <p className="auth-link">
+        Don't have an account? <a href="/signup">Sign Up</a>
+      </p>
     </div>
   );
 };

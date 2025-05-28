@@ -6,13 +6,11 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,4 +63,39 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+/* Add to the end of your index.css */
+/* filepath: d:\Software Engineering\Moringa\Phase_2\group-09-recipe-app-project\src\index.css */
+
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 32px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.auth-title {
+  margin-bottom: 24px;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.auth-error {
+  color: red;
+  text-align: center;
+}
+.auth-link {
+  text-align: center;
+  margin-top: 16px;
 }
