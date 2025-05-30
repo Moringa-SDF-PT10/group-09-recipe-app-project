@@ -20,7 +20,7 @@ function Form({ isEditing }) {
         try {
           const docRef = doc(db, 'recipes', id);
           const docSnap = await getDoc(docRef);
-          if (docSnap.exists() && docSnap.data().userId === currentUser.uid) {
+          if (docSnap.exists() && docSnap.data().userId === currentUser?.uid) {
             const recipe = docSnap.data();
             setName(recipe.name);
             setIngredients(recipe.ingredients.join(', '));
@@ -31,11 +31,12 @@ function Form({ isEditing }) {
           }
         } catch (err) {
           setError(err.message);
+          navigate('/my-recipes');
         }
       };
-      fetchRecipe();
+      if (currentUser) fetchRecipe();
     }
-  }, [isEditing, id, currentUser]);
+  }, [isEditing, id, currentUser, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,12 +57,10 @@ function Form({ isEditing }) {
       };
 
       if (isEditing && id) {
-        // Update existing recipe
         const docRef = doc(db, 'recipes', id);
         await updateDoc(docRef, recipeData);
         alert('Recipe updated successfully!');
       } else {
-        // Create new recipe
         await addDoc(collection(db, 'recipes'), recipeData);
         alert('Recipe created successfully!');
       }
@@ -99,14 +98,14 @@ function Form({ isEditing }) {
           <textarea
             value={instructions}
             onChange={(e) => setInstructions(e.target.value)}
-            placeholder="e.g., Mix ingredients\nBake at 350°F"
+            placeholder="e.g., Mix ingredients\nBake at 350°C"
             required
           />
         </div>
         <div className="form-group">
           <label>Image URL (optional):</label>
           <input
-            type="url"
+            type="text"
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
