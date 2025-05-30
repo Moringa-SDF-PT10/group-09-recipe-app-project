@@ -13,11 +13,11 @@ function Form() {
     e.preventDefault();
     const userId = localStorage.getItem('userId');
     if (!userId) {
-      alert('Please log in to create a recipe.');
+      alert('Please log in to create a recipe.');kitty
       navigate('/login');
       return;
     }
-
+// Create a new recipe object
     const newRecipe = {
       id: uuidv4(),
       title,
@@ -27,7 +27,7 @@ function Form() {
       userId,
       createdAt: new Date().toISOString(),
     };
-
+// Save the new recipe to localStorage
     const recipes = JSON.parse(localStorage.getItem('recipes') || '[]');
     recipes.push(newRecipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
