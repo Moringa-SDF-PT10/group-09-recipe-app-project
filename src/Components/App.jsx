@@ -15,50 +15,28 @@ function App() {
   return (
     <div>
      <nav>
-      <Link to={"./"}>Home</Link>
-      <Link to={"./Edit Recipe"}>Edit Recipe</Link>
-      <Link to={"./Favorites"}>Favorites</Link>
-      <Link to={"./Form"}>Create New Recipe</Link>
-      <Link to={"./Login"}>Login</Link>
-      <Link to={"./My Recipes"}>My Recipes</Link>
-      <Link to={"./Search"}>Search</Link>
-      <Link to={"./Profile"}>My Profile</Link>
-      <Link to={"./RecipeList"}>View Recipes</Link>
-      <Link to={"./SignUp"}>Sign Up</Link>
       <Link to="/">Home</Link>
-        <Link to="/add-recipe">Add Recipe</Link>
-        <Link to="/my-recipes">My Recipes</Link>
-        <Link to="/favorites">Favorites</Link>
-        <Link to="/search">Search</Link>
-        <Link to="/profile">My Profile</Link>
-        <Link to="/recipe-list">View Recipes</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
-      
-
+      <Link to="/add-recipe">Add Recipe</Link>
+      <Link to="/my-recipes">My Recipes</Link>
+      <Link to="/favorites">Favorites</Link>
+      <Link to="/search">Search</Link>
+      <Link to="/profile">My Profile</Link>
+      <Link to="/recipe-list">View Recipes</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Sign Up</Link>
      </nav>
      <main>
       <Routes>
-        <Route path='./' element={<Home /> }/>
-        <Route path='./Edit Recipe' element={<EditRecipe /> }/>
-        <Route path='./Favorites' element={<Favorites /> }/>
-        <Route path='./Form' element={<Form /> }/>
-        <Route path='./Login' element={<Login /> }/>
-        <Route path='./My Recipes' element={<MyRecipes /> }/>
-        <Route path='./Search' element={<Search /> }/>
-        <Route path='./Profile' element={<Profile /> }/>
-        <Route path='./RecipeList' element={<RecipeList /> }/>
-        <Route path='./SignUp' element={<SignUp /> }/>
         <Route path="/" element={<Home />} />
-          <Route path="/add-recipe" element={<Form />} />
-          <Route path="/edit-recipe/:id" element={<EditRecipe />} />
-          <Route path="/my-recipes" element={<MyRecipes />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/recipe-list" element={<RecipeList />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+        <Route path="/add-recipe" element={<Form />} />
+        <Route path="/edit-recipe/:id" element={<EditRecipe />} />
+        <Route path="/my-recipes" element={<MyRecipes />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/recipe-list" element={<RecipeList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       </main>
       <footer>
