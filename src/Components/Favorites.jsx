@@ -1,7 +1,10 @@
 import react from 'react';
 
-function Favorites() {
-  return <h1>Favorites Page</h1>;
+export default function Favorites() {
+  return (
+    <div className="auth-container">
+      <h1 className="auth-title">Favorites</h1>
+      <p>This is your protected Favorites page.</p>
+    </div>
+  );
 }
-
-export default Favorites;
