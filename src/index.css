@@ -42,6 +42,14 @@ h1, h2, h3, h4 {
 }
 
 h1 {
+    font-size: 2rem; /* or 32px, or whatever fits your design */
+    margin-top: 20px; /* optional, improves spacing above */
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+
+h1 {
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
 }
