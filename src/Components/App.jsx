@@ -28,8 +28,22 @@ function App() {
       </nav>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/edit-recipe" element={<EditRecipe />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-recipe"
+            element={
+              <ProtectedRoute>
+                <EditRecipe />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/favorites"
             element={

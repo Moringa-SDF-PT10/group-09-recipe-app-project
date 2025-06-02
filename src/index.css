@@ -35,7 +35,6 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -64,15 +63,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-/* Add to the end of your index.css */
-/* filepath: d:\Software Engineering\Moringa\Phase_2\group-09-recipe-app-project\src\index.css */
+.protected-container {
+  max-width: 700px;
+  margin: 48px auto;
+  padding: 40px 32px;
+  border-radius: 16px;
+  background: #e7adad;        
+  color: #1a1a1a;            
+  box-shadow: 0 4px 24px rgba(60, 60, 60, 0.13);
+  font-size: 1.15em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .protected-container {
+    background: #181c22;       
+    color: #f8f8ff;            
+    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
+  }
+}
+.protected-container h1,
+.protected-container h2,
+.protected-container h3 {
+  color: #2d3a7c;             
+  margin-bottom: 18px;
+}
+
+.protected-container p,
+.protected-container ul,
+.protected-container li {
+  color: inherit;
+}
 
 .auth-container {
   max-width: 400px;
   margin: 40px auto;
   padding: 32px;
   border-radius: 12px;
-  background: #fff;
+  background: #c71212;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   text-align: center;
 }
