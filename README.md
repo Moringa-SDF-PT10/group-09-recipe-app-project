@@ -1,27 +1,22 @@
-# Recipe Sharing App
-The Recipe sharing App, is a single-page React application that allows users to browse, create, and choose favourite recipes using a public API. 
+# 🍽️ Recipe App (React)
+The Recipe sharing App, is a single-page React application that allows users to browse, create, and choose favourite recipes using a public API.
 
-In this App, users can sign in to access protected routes for adding recipes, favoriting recipes, and viewing their profile.  
+In this App, users can sign in to access protected routes for adding recipes, favoriting recipes, and viewing their profile.
 
 The App is built with React, featuring user authentication, Recipe management and intergration with TheMealDB API.
 
-## Features
-- Allows users to browse Recipes
+## 🔧 Features
 
-- users can search for a recipe
-
-- Profile, add-recipe, favorites, edit-recipe,id, and my-recipesUser routes have an authentication
-
-- Allows users to create Recipes
-
-- Has favorites System
-
-- Users can manage Recipes
-
-- Has a responsive design
+- 🔐 Authentication (Login/Register)
+- 🧾 View all recipes
+- ⭐ Mark recipes as favorite
+- ✏️ Edit or delete your recipes
+- 🌐 Responsive design with React Router
 
 
-## Development Stack
+
+##  Tech Stack
+
 
 1. React with Vite
 
@@ -55,20 +50,23 @@ The App is built with React, featuring user authentication, Recipe management an
 
 - Responsive Layout that is optimized for desktop
 
-- Food-Themed colors that are warm and appetizing 
+- Food-Themed colors that are warm and appetizing
 
 - Organized recipe cards with consistent spacing
 
-- Clear menu structure 
+- Clear menu structure
 
-#### API Rate Limiting
+## API Rate Limiting
 
 - TheMealDB has usage limits; implement request caching if needed
 
 
-### Deployment
+## Deployment
 
-The project will be deployed to Netlify
+The project will be deployed to Netlify. Copy the following url to your browser
+```bash
+    rad-banoffee-f2316d.netlify.app
+```
 
 ## License
 - This project is licensed under the MIT License
