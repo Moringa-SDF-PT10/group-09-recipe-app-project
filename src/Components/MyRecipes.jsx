@@ -1,7 +1,10 @@
 import React from "react";
 
-const MyRecipes = () => {
-  return <h1>MyRecipes Page</h1>;
-};
-
-export default MyRecipes;
+export default function MyRecipes() {
+  return (
+    <div className="auth-container">
+      <h1 className="auth-title">My Recipes</h1>
+      <p>This is your protected My Recipes page.</p>
+    </div>
+  );
+}
