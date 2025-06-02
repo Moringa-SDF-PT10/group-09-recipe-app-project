@@ -130,10 +130,25 @@ const Form = ({onUpdateRecipe, editingRecipe, onAddRecipe}) => {
 }
 
 function resetFormAndRedirect() {
-  setFormData() ;
+  setFormData({
+    name: '',
+    ingredients: '',
+    instructions: '',
+    image: '',
+    prepTimeMinutes: '',
+    cookTimeMinutes: '',
+    servings: '',
+    difficulty: '',
+    cuisine: '',
+    caloriesPerServing: '',
+    tags: '',
+    mealType: ''
+  });
   setSubmitting(false);
   alert('Recipe added successfully!');
+  navigate('/RecipeList'); // optional redirect
 }
+
 
 
   return (
