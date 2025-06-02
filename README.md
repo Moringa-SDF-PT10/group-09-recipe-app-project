@@ -31,7 +31,7 @@ The App is built with React, featuring user authentication, Recipe management an
 
 4. CSS
 
-5. Use Firebase authentication
+5. Use local storage authentication system
 
 6. API: TheMealDB for recipes
 
@@ -40,7 +40,7 @@ The App is built with React, featuring user authentication, Recipe management an
 
 
 ## Authentication System
-- The app uses Firebase Authentication for secure user management
+- The app uses local storage authentication system to secure user management
 
 - For registration new users can create accounts with email/password
 
@@ -64,12 +64,6 @@ The App is built with React, featuring user authentication, Recipe management an
 #### API Rate Limiting
 
 - TheMealDB has usage limits; implement request caching if needed
-
-#### Authentication Errors
-
-- Verify Firebase configuration in .env file
-
-- Check Firebase console for authentication settings
 
 
 ### Deployment
