@@ -135,3 +135,150 @@ function resetFormAndRedirect() {
   alert('Recipe added successfully!');
 }
 
+
+  return (
+    <div>
+      <h2>{editingRecipe ? "Edit Recipe" : "Create New Recipe"}</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input type="checkbox"
+          checked={isCustomRecipe}
+          onChange={() => setIsCustomRecipe(!isCustomRecipe)}
+           />
+           Is this a custom recipe?
+        </label>
+        <label>Recipe Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="What's the name of the dish"
+          required
+          value={formData.name}
+          onChange={handleChange} /> <br />
+        <br/>
+        <label>Ingredients</label>
+        <textarea
+          name="ingredients"
+          rows={4}
+          cols={40}
+          placeholder="Ingredients needed (separate with commas)"
+          required
+          value={formData.ingredients}
+          onChange={handleChange}
+          >
+        </textarea>
+        <br/>
+        <label>Preparation Time</label>
+        <input
+          type="number"
+          name="prepTimeMinutes"
+          placeholder="Preparation Time (in minutes)"
+          required
+          value={formData.prepTimeMinutes}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Cooking Time</label>
+        <input
+          type="number"
+          name="cookTimeMinutes"
+          placeholder="Cooking Time (in minutes)"
+          required
+          value={formData.cookTimeMinutes}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Servings</label>
+        <input
+          type="number"
+          name="servings"
+          placeholder="Number of servings"
+          required
+          value={formData.servings}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Instructions</label>
+        <textarea
+          name="instructions"
+          rows={6}
+          cols={40}
+          placeholder="What is the procedure (separate with periods)"
+          required
+          value={formData.instructions}
+          onChange={handleChange}
+          >
+        </textarea>
+        <br/>
+        <label>Difficulty</label>
+        <select
+          name="difficulty"
+          required
+          value={formData.difficulty}
+          onChange={handleChange}
+        >
+          <option value="">Select Difficulty</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <br/>
+        <label>Cuisine</label>
+        <input
+          type="text"
+          name="cuisine"
+          placeholder="e.g., Italian, Chinese, Mexican"
+          required
+          value={formData.cuisine}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Calories Per Serving</label>
+        <input
+          type="number"
+          name="caloriesPerServing"
+          placeholder="Calories Per Serving"
+          required
+          value={formData.caloriesPerServing}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Tags</label>
+        <input
+          type="text"
+          name="tags"
+          placeholder="Tags (separate with commas, e.g., vegetarian, quick, healthy)"
+          value={formData.tags}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Meal Type</label>
+        <input
+          type="text"
+          name="mealType"
+          placeholder="Meal Type (separate with commas, e.g., breakfast, lunch, dinner)"
+          required
+          value={formData.mealType}
+          onChange={handleChange}
+        />
+        <br/>
+        <label>Image</label>
+        <input
+          type="text"
+          name="image"
+          placeholder="Image URL (optional)"
+          value={formData.image}
+          onChange={handleChange} /> <br />
+
+        <button type="submit" disabled={submitting}>
+          {submitting ? 'Adding...' : 'Submit your recipe'}
+        </button>
+      </form>
+      {submitting && <p>Adding recipe...</p>}
+    </div>
+  );
+};
+
+export default Form;
+
+
