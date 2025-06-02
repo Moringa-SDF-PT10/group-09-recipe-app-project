@@ -23,7 +23,7 @@ const Login = () => {
     setTimeout(() => {
       console.log('Simulating successful login with user data:', userData);
       login(userData); // Call the login function from context with user data
-      navigate('/MyRecipes'); // Redirect after login
+      navigate('/'); // Redirect after login
     }, 500);
   };
 

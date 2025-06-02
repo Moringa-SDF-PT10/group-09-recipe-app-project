@@ -11,6 +11,7 @@ import RecipeList from './RecipeList';
 import SignUp from './SignUp';
 import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
+import { useAuth } from './AuthContext'
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -19,8 +20,9 @@ function App() {
   const [editingRecipe, setEditingRecipe] = useState(null);
   const limit = 10; // Number of recipes to fetch from API
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // State to track authentication
-  const [currentUser, setCurrentUser] = useState(null); // State to hold user data
+  const { isAuthenticated, currentUser, loadingAuth, logout } = useAuth();
+
+
 
   useEffect(() => {
     // Fetch recipes from DummyJSON API
@@ -52,15 +54,6 @@ function App() {
         console.error("Failed to parse custom recipes from localStorage:", e);
         localStorage.removeItem('customRecipes'); // Clear invalid data
       }
-    }
-
-    //Load authentication status from localStorage on app start
-    const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
-    const userData = localStorage.getItem('currentUser');
-
-    if (loggedInStatus && userData) {
-        setIsAuthenticated(true);
-        setCurrentUser(JSON.parse(userData));
     }
 
   }, []);
@@ -153,36 +146,11 @@ function App() {
   // Filter logic for Favorites page
   const favoriteRecipes = allRecipes.filter(recipe => recipe.favorite);
 
- const handleLogin = (userData) => {
-  // Save to localStorage
-  localStorage.setItem('isLoggedIn', 'true');
-  localStorage.setItem('currentUser', JSON.stringify(userData));
-
-  // Get from localStorage
-  const loggedInStatus = localStorage.getItem('isLoggedIn') === 'true';
-  const storedUser = localStorage.getItem('currentUser');
-
-  if (loggedInStatus && storedUser) {
-    setIsAuthenticated(true);
-    setCurrentUser(JSON.parse(storedUser));
-    navigate('/MyRecipes');
-  } else {
-    alert("Login failed. Please try again.");
-  }
-};
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setCurrentUser(null);
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('currentUser');
-    navigate('/');
-    };
-
-  if (loading) {
-    return <div>Loading recipes...</div>;
-  }
-
+if (loadingAuth || loading) {
+  return <div style={{ textAlign: "center", paddingTop: "3rem" }}>
+    <h2>Loading Recipes...</h2>
+  </div>;
+}
 
   return (
       <div>
@@ -196,7 +164,7 @@ function App() {
               <Link to={"/Form"}>Create New Recipe</Link>
               <Link to={"/My Recipes"}>My Recipes</Link>
               <Link to={"/Profile"}>My Profile</Link>
-              <button onClick={handleLogout}>Logout</button>
+              <button onClick={logout}>Logout</button>
             </>
           ) : (
             <>
@@ -219,7 +187,7 @@ function App() {
               onEditRecipe={handleEditRecipe}
               onDeleteRecipe={handleDeleteRecipe}
               />} />
-            <Route path='/Login' element={<Login onLogin={handleLogin} />} />
+            <Route path='/Login' element={<Login />} />
             <Route path='/SignUp' element={<SignUp />} />
 
             <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
