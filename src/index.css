@@ -42,14 +42,6 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 2rem; /* or 32px, or whatever fits your design */
-    margin-top: 20px; /* optional, improves spacing above */
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 5px;
-}
-
-
-h1 {
     border-bottom: 2px solid #007bff;
     padding-bottom: 5px;
 }
@@ -195,66 +187,3 @@ img {
 
 }
 
-.protected-container {
-  max-width: 700px;
-  margin: 48px auto;
-  padding: 40px 32px;
-  border-radius: 16px;
-  background: #e7adad;        
-  color: #1a1a1a;            
-  box-shadow: 0 4px 24px rgba(60, 60, 60, 0.13);
-  font-size: 1.15em;
-}
-
-@media (prefers-color-scheme: dark) {
-  .protected-container {
-    background: #181c22;       
-    color: #f8f8ff;            
-    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
-  }
-}
-.protected-container h1,
-.protected-container h2,
-.protected-container h3 {
-  color: #2d3a7c;             
-  margin-bottom: 18px;
-}
-
-.protected-container p,
-.protected-container ul,
-.protected-container li {
-  color: inherit;
-}
-
-.auth-container {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 32px;
-  border-radius: 12px;
-  background: #c71212;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  text-align: center;
-}
-.auth-title {
-  margin-bottom: 24px;
-}
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.auth-form input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.auth-error {
-  color: red;
-  text-align: center;
-}
-.auth-link {
-  text-align: center;
-  margin-top: 16px;
-}

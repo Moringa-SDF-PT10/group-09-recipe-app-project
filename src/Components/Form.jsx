@@ -280,5 +280,3 @@ function resetFormAndRedirect() {
 };
 
 export default Form;
-
-

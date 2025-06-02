@@ -1,56 +1,56 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext'; // Import useAuth
 
 const Login = () => {
-  const { login } = useAuth();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth(); // Get the login function from context
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Simulate authentication logic
+    console.log('Attempting login with:', { username, password });
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      await login(email, password);
-      navigate("/profile");
-    } catch (error) {
-      setError("Failed to log in. Please check your credentials.");
-    }
+    // Simulate receiving user data after successful login
+    const userData = {
+      username: username,
+      email: `${username}@gmail.com`,
+
+    };
+
+    setTimeout(() => {
+      console.log('Simulating successful login with user data:', userData);
+      login(userData); // Call the login function from context with user data
+      navigate('/MyRecipes'); // Redirect after login
+    }, 500);
   };
 
   return (
-    <div className="auth-container">
-      <h1 className="auth-title">Login</h1>
-      <form className="auth-form" onSubmit={handleLogin}>
-        <label>
-          Email:
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+         <div>
+          <label htmlFor="username">Username:</label>
           <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            placeholder="Enter your password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
-        </label>
+        </div>
         <button type="submit">Login</button>
-        {error && <p className="auth-error">{error}</p>}
       </form>
-      <p className="auth-link">
-        Don't have an account? <a href="/signup">Sign Up</a>
-      </p>
     </div>
   );
 };
